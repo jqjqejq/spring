@@ -1,0 +1,40 @@
+#spring:
+#  datasource:
+#    pmacds:
+#      jndi-name: jdbc/IADB
+#    nbqds:
+#      jndi-name: jdbc/DBGNBDAT
+spring:
+  datasource:
+    pmacds:
+      jdbcUrl: jdbc:db2://localhost:50000/SAMPLE:currentSchema=GNBWFDAT;
+      username: db2inst1
+      password: Pmac-mobile
+      driver-class-name: com.ibm.db2.jcc.DB2Driver
+    nbqds:
+      jdbcUrl: jdbc:db2://localhost:50000/SAMPLE:currentSchema=GNBWFDAT;
+      username: db2inst1
+      password: Pmac-mobile
+      driver-class-name: com.ibm.db2.jcc.DB2Driver
+  jmx:
+    enabled: false
+  jackson:
+    date-format: yyyyMMdd
+    time-zone: Asia/Tokyo
+  resources:
+    static-locations: classpath:/WEB-INF/
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 60
+
+logging:
+  level:
+    org:
+      mybatis: DEBUG
+    jp:
+      co:
+        giblife:
+          poc: DEBUG
+        
