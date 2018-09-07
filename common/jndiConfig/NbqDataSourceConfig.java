@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -24,9 +26,15 @@ import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 public class NbqDataSourceConfig {
 
     @Bean(name = "nbqDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.nbqds")
+    public DataSource setDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "nbqDataSource")
     public DataSource dataSource() {
         JndiDataSourceLookup dataSourceLookup = new JndiDataSourceLookup();
-        DataSource dataSource = dataSourceLookup.getDataSource("jdbc/DSPMAC");
+        DataSource dataSource = dataSourceLookup.getDataSource("jdbc/DBGNBDAT");
         return dataSource;
     }
 
