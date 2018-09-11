@@ -25,8 +25,6 @@ import jp.co.pmacmobile.domain.service.ContractProgressService;
  *
  * <ul>新契約申込み進捗確認検索機能</ul>
  *
- * @author hitachi
- *
  */
 @Service
 @Transactional
